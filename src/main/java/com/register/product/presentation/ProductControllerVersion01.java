@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.register.product.domain.usecase.RegisterProductUseCase;
@@ -46,9 +47,9 @@ public class ProductControllerVersion01 {
 	}
 	
 	@GetMapping()
-	public ResponseEntity<List<RetrieveProductUseCaseOutputMapper>> retieveAllProductsUsingFilters(){
+	public ResponseEntity<List<RetrieveProductUseCaseOutputMapper>> retieveAllProductsUsingFilters(@RequestParam String sort_order, @RequestParam String sort_field){
 		
-		var products = retrieveProductsUsingFilter.retrieveProductsUsingFilters();
+		var products = retrieveProductsUsingFilter.retrieveProductsUsingFilters(sort_order, sort_field);
 		return new ResponseEntity<List<RetrieveProductUseCaseOutputMapper>>(products, HttpStatus.OK);
 	}
 }

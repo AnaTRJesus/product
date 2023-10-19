@@ -6,5 +6,5 @@ import com.register.product.presentation.mapper.output.RetrieveProductUseCaseOut
 
 public interface RetrieveProductsUsingFilterUseCase {
 	
-	List<RetrieveProductUseCaseOutputMapper> retrieveProductsUsingFilters();
+	List<RetrieveProductUseCaseOutputMapper> retrieveProductsUsingFilters(String sort_order, String sort_field);
 }
