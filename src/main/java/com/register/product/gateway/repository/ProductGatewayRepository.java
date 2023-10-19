@@ -14,4 +14,6 @@ public interface ProductGatewayRepository {
 	ProductGatewayRepositoryMapperOutput findByKey(String key) throws Exception;
 	
 	List<ProductGatewayRepositoryMapperOutput> findAllUsingFilter(Sort sort);
+	
+	List<ProductGatewayRepositoryMapperOutput> findByName(String name, String sortField, String sortOrder);
 }

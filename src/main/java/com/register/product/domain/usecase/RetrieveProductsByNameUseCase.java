@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.register.product.presentation.mapper.output.RetrieveProductUseCaseOutputMapper;
 
-public interface RetrieveProductsUsingFilterUseCase {
+public interface RetrieveProductsByNameUseCase {
 	
-	List<RetrieveProductUseCaseOutputMapper> retrieveProductsUsingFilters(String sortOrder, String sortField);
+	List<RetrieveProductUseCaseOutputMapper> retrieveProductsByName(String name, String sortField, String sortOrder);
 }

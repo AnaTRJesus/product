@@ -18,9 +18,9 @@ public class RetrieveProductsUsingFilterUseCaseImplementation implements Retriev
 	
 	private final ProductGatewayRepository repository;
 	
-	public List<RetrieveProductUseCaseOutputMapper> retrieveProductsUsingFilters(String sort_order, String sort_field) {
+	public List<RetrieveProductUseCaseOutputMapper> retrieveProductsUsingFilters(String sortOrder, String sortField) {
 		
-		var products = repository.findAllUsingFilter(Sort.by(Sort.Direction.fromString(sort_order), sort_field));
+		var products = repository.findAllUsingFilter(Sort.by(Sort.Direction.fromString(sortOrder), sortField));
 		
 		var retrieveProductUseCaseOutputMapper = products.stream()
 				.map(product -> RetrieveProductUseCaseOutputMapper.mapper(product))

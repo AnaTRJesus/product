@@ -47,4 +47,16 @@ public class ProductGatewayRepositoryImplementation implements ProductGatewayRep
 		
 		return productsGatewayRepositoryMapperOutput;
 	}
+
+	@Override
+	public List<ProductGatewayRepositoryMapperOutput> findByName(String name, String sortField, String sortOrder) {
+		
+		var products = productGatewayRepositoryImplementationJPA.test(name, sortField, sortOrder);
+
+		var productsGatewayRepositoryMapperOutput = products.stream()
+		.map(product -> ProductGatewayRepositoryMapperOutput.mapper(product))
+		.collect(Collectors.toList());
+		
+		return productsGatewayRepositoryMapperOutput;	
+	}
 }
