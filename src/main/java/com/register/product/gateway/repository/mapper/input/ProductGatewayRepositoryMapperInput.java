@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import com.register.product.gateway.repository.entity.Product;
-import com.register.product.gateway.repository.entity.SupplierDetails;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -32,8 +31,7 @@ public class ProductGatewayRepositoryMapperInput {
 	public static Product mapper(
 			ProductGatewayRepositoryMapperInput productGatewayRepositoryMapperInput) {
 		
-		var supplierDetails = SupplierDetails.builder().build();
-		var product = Product.builder().supplierDetails(supplierDetails).build();
+		var product = Product.builder().build();
 		
 		return product;
 	}

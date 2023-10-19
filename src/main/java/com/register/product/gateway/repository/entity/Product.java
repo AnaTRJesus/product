@@ -2,15 +2,17 @@ package com.register.product.gateway.repository.entity;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+
 
 @Getter
 @Setter
@@ -18,18 +20,24 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements java.io.Serializable{
 	
-	private String sku;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+    
+    private String sku;
 	
 	private String name;
 	
 	private String description;
 	
 	private BigDecimal price;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	private SupplierDetails supplierDetails;
 	
 	@Override
 	public String toString() {

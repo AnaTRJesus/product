@@ -19,8 +19,6 @@ public class Product {
 	
 	private BigDecimal price;
 	
-	private SupplierDetails supplierDetails;
-	
 	
 	@Override
 	public String toString() {

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.register.product.gateway.repository.ProductGatewayRepository;
 import com.register.product.gateway.repository.entity.Product;
@@ -15,21 +15,21 @@ import com.register.product.gateway.repository.mapper.output.ProductGatewayRepos
 
 import lombok.AllArgsConstructor;
 
-@Repository
+@Component
 @AllArgsConstructor
 public class ProductGatewayRepositoryImplementation implements ProductGatewayRepository {
 	
-	private final ProductGatewayRepositoryImplementationJPA productGatewayRepositoryImplementation;
+	private final ProductGatewayRepositoryImplementationJPA productGatewayRepositoryImplementationJPA;
 
 	public ProductGatewayRepositoryMapperOutput save(ProductGatewayRepositoryMapperInput productGatewayRepositoryMapperInput) {
 		
-		var product = productGatewayRepositoryImplementation.save(ProductGatewayRepositoryMapperInput.mapper(productGatewayRepositoryMapperInput));
+		var product = productGatewayRepositoryImplementationJPA.save(ProductGatewayRepositoryMapperInput.mapper(productGatewayRepositoryMapperInput));
 		return ProductGatewayRepositoryMapperOutput.mapper(product);
 	}
 
 	public ProductGatewayRepositoryMapperOutput findByKey(String key) throws Exception {
 		
-		var product = productGatewayRepositoryImplementation.findById(key);
+		var product = productGatewayRepositoryImplementationJPA.findById(key);
 		if(!product.isPresent()) {
 			throw new Exception();
 		}
@@ -37,7 +37,7 @@ public class ProductGatewayRepositoryImplementation implements ProductGatewayRep
 	}
 
 	public List<ProductGatewayRepositoryMapperOutput> findAllUsingFilter(Sort sort) {
-		var products = productGatewayRepositoryImplementation.findAll(sort);
+		var products = productGatewayRepositoryImplementationJPA.findAll(sort);
 	    List<Product> result = new ArrayList<Product>();
 		products.forEach(result::add);
 
