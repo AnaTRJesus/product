@@ -14,11 +14,17 @@ import lombok.Setter;
 public class ProductGatewayRepositoryMapperOutput {
 	
 	private String sku;
+	
 	private String name;
 	
-	
 	public static ProductGatewayRepositoryMapperOutput mapper(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		var productGatewayRepositoryMapperOutput = ProductGatewayRepositoryMapperOutput
+				.builder()
+				.name(product.getName())
+				.sku(product.getSku())
+				.build();
+		
+		return productGatewayRepositoryMapperOutput;
 	}
 }

@@ -4,5 +4,5 @@ import com.register.product.presentation.mapper.output.RetrieveProductUseCaseOut
 
 public interface RetrieveSingleProductUseCase {
 	
-	RetrieveProductUseCaseOutputMapper retrieve(String key);
+	RetrieveProductUseCaseOutputMapper retrieve(String key) throws Exception;
 }

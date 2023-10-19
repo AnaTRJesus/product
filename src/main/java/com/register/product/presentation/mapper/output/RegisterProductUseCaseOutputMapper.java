@@ -25,5 +25,4 @@ public class RegisterProductUseCaseOutputMapper {
 				.build();
 		return registerProductUseCaseOutputMapper;
 	}
-
 }

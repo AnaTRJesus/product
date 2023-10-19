@@ -1,7 +1,6 @@
 package com.register.product.gateway.repository.mapper.input;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 import com.register.product.gateway.repository.entity.Product;
 
@@ -24,15 +23,17 @@ public class ProductGatewayRepositoryMapperInput {
 	
 	private BigDecimal price;
 	
-	private String supplierName;
-	
-	private UUID supplierIdentifier;
 
 	public static Product mapper(
 			ProductGatewayRepositoryMapperInput productGatewayRepositoryMapperInput) {
 		
-		var product = Product.builder().build();
-		
+		var product = Product.builder()
+				.name(productGatewayRepositoryMapperInput.getName())
+				.description(productGatewayRepositoryMapperInput.getDescription())
+				.sku(productGatewayRepositoryMapperInput.getSku())
+				.price(productGatewayRepositoryMapperInput.getPrice())
+				.build();
+
 		return product;
 	}
 }

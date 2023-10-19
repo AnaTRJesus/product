@@ -1,5 +1,7 @@
 package com.register.product.gateway.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Sort;
 
 import com.register.product.gateway.repository.mapper.input.ProductGatewayRepositoryMapperInput;
@@ -11,5 +13,5 @@ public interface ProductGatewayRepository {
 	
 	ProductGatewayRepositoryMapperOutput findByKey(String key) throws Exception;
 	
-	Iterable<ProductGatewayRepositoryMapperOutput> findAllUsingFilter(Sort sort);
+	List<ProductGatewayRepositoryMapperOutput> findAllUsingFilter(Sort sort);
 }

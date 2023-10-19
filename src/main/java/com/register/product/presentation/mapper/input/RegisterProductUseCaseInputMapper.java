@@ -35,10 +35,7 @@ public class RegisterProductUseCaseInputMapper {
 		.description(registerProductUseCaseInputMapper.getDescription())
 		.price(registerProductUseCaseInputMapper.getPrice())
 		.sku(registerProductUseCaseInputMapper.getSku())
-		.supplierName(registerProductUseCaseInputMapper.getSupplierName())
-		.supplierIdentifier(registerProductUseCaseInputMapper.getSupplierIdentifier())
 		.build();
-		
 		
 		return productGatewayRepositoryMapperInput;
 	}

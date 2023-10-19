@@ -5,5 +5,5 @@ import com.register.product.presentation.mapper.output.RegisterProductUseCaseOut
 
 public interface RegisterProductUseCase {
 	
-	RegisterProductUseCaseOutputMapper register(RegisterProductUseCaseInputMapper product);
+	RegisterProductUseCaseOutputMapper register(RegisterProductUseCaseInputMapper registerProductUseCaseInputMapper);
 }

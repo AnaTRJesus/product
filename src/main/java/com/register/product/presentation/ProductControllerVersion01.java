@@ -39,7 +39,7 @@ public class ProductControllerVersion01 {
 	}
 	
 	@GetMapping("/{key}")
-	public ResponseEntity<RetrieveProductUseCaseOutputMapper> retievebyKey(@PathVariable String key){
+	public ResponseEntity<RetrieveProductUseCaseOutputMapper> retievebyKey(@PathVariable String key) throws Exception{
 		
 		var product = retrieveProduct.retrieve(key);
 		return new ResponseEntity<RetrieveProductUseCaseOutputMapper>(product, HttpStatus.OK);
