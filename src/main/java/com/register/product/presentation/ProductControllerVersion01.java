@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.register.product.domain.usecase.RegisterProductUseCase;
+import com.register.product.domain.usecase.RetrieveProductsByNameAndSku;
 import com.register.product.domain.usecase.RetrieveProductsByNameUseCase;
 import com.register.product.domain.usecase.RetrieveProductsUsingFilterUseCase;
 import com.register.product.domain.usecase.RetrieveSingleProductUseCase;
@@ -32,9 +33,8 @@ public class ProductControllerVersion01 {
 	private final RetrieveSingleProductUseCase retrieveProduct;
 	private final RetrieveProductsUsingFilterUseCase retrieveProductsUsingFilter;
 	private final RetrieveProductsByNameUseCase retrieveProductsByNameUseCase;
+	private final RetrieveProductsByNameAndSku retrieveProductsByNameAndSku;
 
-
-	
 	
 	@PostMapping()
 	public ResponseEntity<RegisterProductUseCaseOutputMapper> register(@RequestBody RegisterProductUseCaseInputMapper payload){
@@ -61,6 +61,13 @@ public class ProductControllerVersion01 {
 	public ResponseEntity<List<RetrieveProductUseCaseOutputMapper>> retievebyName(@RequestParam String name, @RequestParam String sort_field, @RequestParam String sort_order) throws Exception{
 		
 		var products = retrieveProductsByNameUseCase.retrieveProductsByName(name, sort_field, sort_order);
+		return new ResponseEntity<List<RetrieveProductUseCaseOutputMapper>>(products, HttpStatus.OK);
+	}
+	
+	@GetMapping("/filter")
+	public ResponseEntity<List<RetrieveProductUseCaseOutputMapper>> retievebyFilters(@RequestParam String name, @RequestParam String sku) throws Exception{
+		
+		var products = retrieveProductsByNameAndSku.retrieveProductsByNameAndSku(name, sku);
 		return new ResponseEntity<List<RetrieveProductUseCaseOutputMapper>>(products, HttpStatus.OK);
 	}
 }

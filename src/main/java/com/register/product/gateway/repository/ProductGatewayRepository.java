@@ -16,4 +16,6 @@ public interface ProductGatewayRepository {
 	List<ProductGatewayRepositoryMapperOutput> findAllUsingFilter(Sort sort);
 	
 	List<ProductGatewayRepositoryMapperOutput> findByName(String name, String sortField, String sortOrder);
+
+	List<ProductGatewayRepositoryMapperOutput> findByNameAndSku(String name, String sku);
 }

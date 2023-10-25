@@ -13,4 +13,8 @@ import com.register.product.gateway.repository.entity.Product;
 public interface ProductGatewayRepositoryImplementationJPA extends CrudRepository<Product, String>, PagingAndSortingRepository<Product, String> {
 
 	List<Product> findByName(String name, Pageable page);
+	
+	List<Product> findByNameAndSku(String name, String sku);	
+	
+	List<Product> findByNameOrSku(String name, String sku);	
 }
