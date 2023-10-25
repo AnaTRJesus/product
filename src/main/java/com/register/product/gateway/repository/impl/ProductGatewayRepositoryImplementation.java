@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Component;
 
 import com.register.product.gateway.repository.ProductGatewayRepository;
@@ -51,11 +54,15 @@ public class ProductGatewayRepositoryImplementation implements ProductGatewayRep
 	@Override
 	public List<ProductGatewayRepositoryMapperOutput> findByName(String name, String sortField, String sortOrder) {
 		
-		var products = productGatewayRepositoryImplementationJPA.test(name, sortField, sortOrder);
+		Pageable page = PageRequest.of(0,10,Sort.by(Direction.fromString(sortOrder), sortField));
+		
+		var products = productGatewayRepositoryImplementationJPA.findByName(name, page);
 
 		var productsGatewayRepositoryMapperOutput = products.stream()
 		.map(product -> ProductGatewayRepositoryMapperOutput.mapper(product))
 		.collect(Collectors.toList());
+		
+		
 		
 		return productsGatewayRepositoryMapperOutput;	
 	}
